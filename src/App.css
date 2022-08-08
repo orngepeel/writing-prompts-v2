@@ -1,38 +1,41 @@
-.App {
+/*
+color palette from coolors.co
+black coral: #59656F
+lavender blush: #EEE5E9
+raisin black: #1D1E2C
+maize crayola: #FAC748
+*/
+
+body {
+  background-color: #59656F;
+  width: 75%;
+  margin: auto;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 50px;
+  color: #EEE5E9;
+  text-shadow: 3px 2px #1D1E2C;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#prompt {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 30px;
+  background-color: #EEE5E9;
+  border: 5px solid #1D1E2C;
+  border-radius: 25px;
+  padding: 30px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button {
+  font-family: 'Roboto', sans-serif;
+  font-size: 22px;
+  background-color: #FAC748;
+  width: 250px;
+  margin-top: 25px;
+  border: 3px solid #1D1E2C;
+  border-radius: 15px;
+  padding: 15px;
 }
