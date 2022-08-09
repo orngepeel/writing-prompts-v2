@@ -2,7 +2,7 @@ import React from "react";
 
 export function Prompt({ prompt }) {
     return (
-        <div id="prompt">{}</div>
+        <div id="prompt">{prompt}</div>
     )
 }
 
