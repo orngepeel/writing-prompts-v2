@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import * as prompt from './prompt_model.mjs';
-import { Express } from 'express';
+import express from 'express';
 import asyncHandler from 'express-async-handler';
 
 const PORT = process.env.PORT;
