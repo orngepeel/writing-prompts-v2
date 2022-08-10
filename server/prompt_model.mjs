@@ -3,7 +3,9 @@ import 'dotenv/config';
 
 mongoose.connect(
     process.env.MONGODB_CONNECT_STRING,
-    {useNewUrlParser: true}
+    {useNewUrlParser: true,
+        dbName: 'writing_prompts'
+    }
 );
 
 const db = mongoose.connection;
@@ -12,49 +14,34 @@ db.once('open', () => {
     console.log('Successfully connected to MongoDB using Mongoose!');
 });
 
-const genresSchema = mongoose.Schema({
-    name: {type: String, required: true},
-    article: {type: String, required: true}
-});
+const Genre = db.collection('Genres');
 
-const protagonistsSchema = mongoose.Schema({
-    name: {type: String, required: true}
-});
+const Protagonist = db.collection('Protagonists');
 
-const conflictsSchema = mongoose.Schema({
-    name: {type: String, required: true}
-});
+const Conflict = db.collection('Conflicts');
 
-const antagonistsSchema = mongoose.Schema({
-    name: {type: String, required: true}
-});
+const Antagonist = db.collection('Antagonists');
 
-const Genre = mongoose.model('Genre', genresSchema);
-
-const Protagonist = mongoose.model('Protagonist', protagonistsSchema);
-
-const Conflict = mongoose.model('Conflict', conflictsSchema);
-
-const Antagonist = mongoose.model('Antagonist', antagonistsSchema);
-
-const findRandomGenre = async () => {
-    const randGenre = await Genre.aggregate().sample(1);
+const findRandomGenre = () => {
+    const random = Math.floor(Math.random() * Genre.length)
+    const randGenre = Genre.findOne().skip(random);
+    console.log(randGenre)
     return randGenre.exec();
 };
 
 const findRandomProtagonist = async () => {
-    const randProtagonist = await Protagonist.aggregate().sample(1);
-    return randProtagonist.exec();
+    const randProtagonist = await Protagonist.aggregate().sample(1).exec();
+    return randProtagonist;
 };
 
 const findRandomConflict = async () => {
-    const randConflict = await Conflict.aggregate().sample(1);
-    return randConflict.exec();
+    const randConflict = await Conflict.aggregate().sample(1).exec();
+    return randConflict;
 };
 
 const findRandomAntagonist = async () => {
-    const randAntagonist = await Antagonist.aggregate().sample(1);
-    return randAntagonist.exec();
+    const randAntagonist = await Antagonist.aggregate().sample(1).exec();
+    return randAntagonist;
 };
 
 export { findRandomGenre, findRandomProtagonist, findRandomConflict, findRandomAntagonist };

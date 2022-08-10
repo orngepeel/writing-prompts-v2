@@ -12,7 +12,7 @@ app.use(express.json());
 app.get('/genre', asyncHandler(async (req, res) => {
     const result = await prompt.findRandomGenre();
 
-    res.json(result);
+    res.send(JSON.stringify(result));
 }));
 
 app.get('/protagonist', asyncHandler(async (req, res) => {
