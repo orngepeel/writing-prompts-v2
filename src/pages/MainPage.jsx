@@ -10,7 +10,7 @@ function MainPage() {
         setPrompt(newPrompt);
     };
 
-    const handleKeys = async (event) => {
+    const handleKeyDown = async (event) => {
         if(event.key === " ") {
             newPrompt = await generatePrompt();
             setPrompt(newPrompt);
@@ -18,9 +18,9 @@ function MainPage() {
     };
 
     return (
-        <div>
+        <div onKeyDown={handleKeyDown}>
             <PromptContainer prompt={prompt} />
-            <button onClick={handleClick} onKeyDown={handleKeys}>New Prompt!</button>
+            <button onClick={handleClick}>New Prompt!</button>
         </div>
     )
 };
