@@ -13,7 +13,8 @@ db.once('open', () => {
 });
 
 const genresSchema = mongoose.Schema({
-    name: {type: String, required: true}
+    name: {type: String, required: true},
+    article: {type: String, required: true}
 });
 
 const protagonistsSchema = mongoose.Schema({
@@ -56,4 +57,4 @@ const findRandomAntagonist = async () => {
     return randAntagonist.exec();
 };
 
-export { findRandomGenre, findRandomProtagonist, findRandomConflict, findRandomAntagonist }
+export { findRandomGenre, findRandomProtagonist, findRandomConflict, findRandomAntagonist };
