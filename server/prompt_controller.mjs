@@ -2,6 +2,7 @@ import 'dotenv/config';
 import * as prompt from './prompt_model.mjs';
 import express from 'express';
 import asyncHandler from 'express-async-handler';
+import { Router as router} from 'express';
 
 const PORT = process.env.PORT;
 
@@ -9,25 +10,25 @@ const app = express();
 
 app.use(express.json());
 
-app.get('/genre', asyncHandler(async (req, res) => {
+router.get('/genre', asyncHandler(async (req, res) => {
     const result = await prompt.findRandomGenre();
 
     res.send(JSON.stringify(result));
 }));
 
-app.get('/protagonist', asyncHandler(async (req, res) => {
+router.get('/protagonist', asyncHandler(async (req, res) => {
     const result = await prompt.findRandomProtagonist();
 
     res.json(result);
 }));
 
-app.get('/conflict', asyncHandler(async (req, res) => {
+router.get('/conflict', asyncHandler(async (req, res) => {
     const result = await prompt.findRandomConflict();
 
     res.json(result);
 }));
 
-app.get('/antagonist', asyncHandler(async (req, res) => {
+router.get('/antagonist', asyncHandler(async (req, res) => {
     const result = await prompt.findRandomAntagonist();
 
     res.json(result);
