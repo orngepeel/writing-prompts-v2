@@ -32,3 +32,7 @@ app.get('/antagonist', asyncHandler(async (req, res) => {
 
     res.json(result);
 }));
+
+app.listen(PORT, () => {
+    console.log(`Server listening on port ${PORT}...`)
+});
