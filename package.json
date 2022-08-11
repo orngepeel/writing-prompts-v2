@@ -2,6 +2,7 @@
   "name": "writing-prompts-v2",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://orngepeel.github.io/writing-prompts-v2",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
@@ -11,6 +12,7 @@
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "express-async-handler": "^1.2.0",
+    "gh-pages": "^4.0.0",
     "mongoose": "^6.5.1",
     "nodemon": "^2.0.19",
     "react": "^18.2.0",
@@ -19,6 +21,8 @@
     "web-vitals": "^2.1.0"
   },
   "scripts": {
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "server": "nodemon ./server/prompt_controller.mjs",
     "build": "react-scripts build",
