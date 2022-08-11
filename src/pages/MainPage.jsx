@@ -3,7 +3,7 @@ import PromptContainer from "../components/PromptContainer";
 import { useState, useEffect } from "react";
 import useEventListener from "@use-it/event-listener";
 
-const URL = 'https://wpg2.herokuapp.com/'
+const URL = 'https://wpg2.herokuapp.com'
 
 function MainPage() {
     const [prompt, setPrompt] = useState("Click the button or press space to generate a new prompt!");
