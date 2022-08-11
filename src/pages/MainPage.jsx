@@ -1,6 +1,9 @@
 import React from "react";
 import PromptContainer from "../components/PromptContainer";
 import { useState, useEffect } from "react";
+import useEventListener from "@use-it/event-listener";
+
+const URL = 'http://localhost:8325'
 
 function MainPage() {
     const [prompt, setPrompt] = useState("Click the button or press space to generate a new prompt!");
@@ -10,30 +13,34 @@ function MainPage() {
     const [antagonist, setAntagonist] = useState();
 
     const loadGenre = async () => {
-        const response = await fetch(`/genre`);
+        const response = await fetch(`${URL}/genre`);
         const genre = await response.json();
-        setGenre(genre);
+        setGenre(genre[0]);
     };
 
     const loadProtagonist = async () => {
-        const response = await fetch(`/protagonist`);
+        const response = await fetch(`${URL}/protagonist`);
         const protagonist = await response.json();
-        setProtagonist(protagonist);
+        setProtagonist(protagonist[0]);
     };
     
     const loadConflict = async () => {
-        const response = await fetch(`/conflict`);
+        const response = await fetch(`${URL}/conflict`);
         const conflict = await response.json();
-        setConflict(conflict);
+        setConflict(conflict[0]);
     };
     
     const loadAntagonist = async () => {
-        const response = await fetch(`/antagonist`);
+        const response = await fetch(`${URL}/antagonist`);
         const antagonist = await response.json();
-        setAntagonist(antagonist);
+        setAntagonist(antagonist[0]);
     };
 
     const generatePrompt = () => {
+        loadGenre();
+        loadProtagonist();
+        loadConflict();
+        loadAntagonist();
         const newPrompt = `Write ${genre.article} ${genre.name} story where ${protagonist.name} ${conflict.name} ${antagonist.name}.`
 
         return newPrompt
@@ -44,12 +51,16 @@ function MainPage() {
         setPrompt(newPrompt);
     };
 
-    const handleKeyDown = (event) => {
-        if(event.key === " ") {
+    const handleKeyDown = ({key}) => {
+        const SPACE_KEYS = [' ', 'Spacebar', '32']
+        if(SPACE_KEYS.includes(String(key))) {
+            console.log('space!')
             const newPrompt = generatePrompt();
             setPrompt(newPrompt);
         };
     };
+
+    useEventListener('keydown', handleKeyDown);
 
     useEffect(() => {
         loadGenre();
