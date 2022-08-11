@@ -54,7 +54,6 @@ function MainPage() {
     const handleKeyDown = ({key}) => {
         const SPACE_KEYS = [' ', 'Spacebar', '32']
         if(SPACE_KEYS.includes(String(key))) {
-            console.log('space!')
             const newPrompt = generatePrompt();
             setPrompt(newPrompt);
         };
