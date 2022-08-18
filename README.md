@@ -5,10 +5,9 @@ Note: The database is hosted on Heroku, so sometimes it takes a few extra second
 # Overview
 Sometimes the hardest part of writing is deciding what to write. This is a random writing prompt generator that selects a genre, protagonist description, and a conflict for you, so you can get right to the good stuff!
 
----
+Prompt elements are stored in a MongoDB cluster. 
 
-# Additional Information
-This is an improved version of an older project of mine. This version is more dynamic and has more ability to scale than the original. I have left the original version live to demonstrate growth and improvement. Note that both versions contain the same styling. The original version can be accessed [here](https://github.com/orngepeel/writing-prompt-generator).
+### View the back-end code [here](https://github.com/orngepeel/writing-prompts-v2-server)
 
 ---
 
