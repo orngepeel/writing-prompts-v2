@@ -1,5 +1,4 @@
 # [Live Preview](https://orngepeel.github.io/writing-prompts-v2/)
-Note: The database is hosted on Heroku, so sometimes it takes a few extra seconds on the first prompt!
 ---
 
 # Overview
